@@ -19,6 +19,15 @@ NBA: nba_api / hoopR ┘
 | API              | FastAPI + Uvicorn, `X-API-Key` paywall, shared usage meter |
 | Frontend         | React 18 + Vite                                            |
 
+## Screenshots
+
+Developer portal, signed in as the seeded `pro` demo account.
+
+| | |
+|---|---|
+| **Login** — demo accounts are click-to-fill, so a reviewer can get in without reading the seed script. <br><br> <img src="screenshots/statvault-login.png" alt="StatVault login screen with three click-to-fill demo accounts" width="100%"> | **API Key Manager** — the key stays masked until revealed, and usage is metered against the plan's monthly limit. <br><br> <img src="screenshots/statvault-keymanager.png" alt="API Key Manager showing a masked key, regenerate control, and monthly usage meter" width="100%"> |
+| **Analytics Explorer** — 25,220 pitching seasons, server-side filtered, sorted and paginated. FIP is flagged `PRO` because it is metered. <br><br> <img src="screenshots/statvault-analytics.png" alt="Analytics Explorer table of pitching seasons sorted ascending by FIP" width="100%"> | **Documentation** — parameter reference plus cURL, Python and JavaScript examples, pre-filled with the signed-in key. <br><br> <img src="screenshots/statvault-docs.png" alt="API documentation page with parameter table and pre-filled cURL example" width="100%"> |
+
 ## Sports & premium metrics
 
 | Sport | Schema | Source              | View                  | Premium metric                                  |

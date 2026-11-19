@@ -25,8 +25,8 @@ Developer portal, signed in as the seeded `pro` demo account.
 
 | | |
 |---|---|
-| **Login** — demo accounts are click-to-fill, so a reviewer can get in without reading the seed script. <br><br> <img src="screenshots/statvault-login.png" alt="StatVault login screen with three click-to-fill demo accounts" width="100%"> | **API Key Manager** — the key stays masked until revealed, and usage is metered against the plan's monthly limit. <br><br> <img src="screenshots/statvault-keymanager.png" alt="API Key Manager showing a masked key, regenerate control, and monthly usage meter" width="100%"> |
-| **Analytics Explorer** — 25,220 pitching seasons, server-side filtered, sorted and paginated. FIP is flagged `PRO` because it is metered. <br><br> <img src="screenshots/statvault-analytics.png" alt="Analytics Explorer table of pitching seasons sorted ascending by FIP" width="100%"> | **Documentation** — parameter reference plus cURL, Python and JavaScript examples, pre-filled with the signed-in key. <br><br> <img src="screenshots/statvault-docs.png" alt="API documentation page with parameter table and pre-filled cURL example" width="100%"> |
+| **Login**: demo accounts are click-to-fill, so a reviewer can get in without reading the seed script. <br><br> <img src="screenshots/statvault-login.png" alt="StatVault login screen with three click-to-fill demo accounts" width="100%"> | **API Key Manager**: the key stays masked until revealed, and usage is metered against the plan's monthly limit. <br><br> <img src="screenshots/statvault-keymanager.png" alt="API Key Manager showing a masked key, regenerate control, and monthly usage meter" width="100%"> |
+| **Analytics Explorer**: 25,220 pitching seasons, server-side filtered, sorted and paginated. FIP is flagged `PRO` because it is metered. <br><br> <img src="screenshots/statvault-analytics.png" alt="Analytics Explorer table of pitching seasons sorted ascending by FIP" width="100%"> | **Documentation**: parameter reference plus cURL, Python and JavaScript examples, pre-filled with the signed-in key. <br><br> <img src="screenshots/statvault-docs.png" alt="API documentation page with parameter table and pre-filled cURL example" width="100%"> |
 
 ## Sports & premium metrics
 
@@ -38,19 +38,19 @@ Developer portal, signed in as the seeded `pro` demo account.
 
 ## What's inside
 
-- **Ingestion** — `scripts/ingest.py` (MLB Lahman), `scripts/ingest_nfl.py` (nflverse
+- **Ingestion**: `scripts/ingest.py` (MLB Lahman), `scripts/ingest_nfl.py` (nflverse
   weekly stats + rosters), `scripts/ingest_nba_api.py` (live nba_api, rate-limited with
   `time.sleep`) and `scripts/ingest_nba.py` (offline hoopR-data fallback). All coerce
   bad values to NULL instead of crashing.
-- **Schema isolation** — `scripts/migrate_to_schemas.py` moves MLB objects into the
+- **Schema isolation**: `scripts/migrate_to_schemas.py` moves MLB objects into the
   `mlb` schema in-place (non-destructive `ALTER ... SET SCHEMA`) and creates `nfl`/`nba`.
   App tables (`users`, `api_keys`) stay in `public` (cross-sport).
-- **Feature engineering** — `scripts/create_views.py` builds all three materialized
+- **Feature engineering**: `scripts/create_views.py` builds all three materialized
   views with metric math in SQL, indexed on season + player name.
-- **Paywall API** (`backend/app`) — every premium endpoint (FIP, ANY/A, TS%) is
+- **Paywall API** (`backend/app`): every premium endpoint (FIP, ANY/A, TS%) is
   protected by the **same** `require_quota` dependency: valid `X-API-Key` required,
   metered against a monthly limit, `429` when exceeded.
-- **Developer portal** (`frontend`) — login → dashboard (API Key Manager, Analytics
+- **Developer portal** (`frontend`): login → dashboard (API Key Manager, Analytics
   Explorer, Documentation). *Note: the portal currently surfaces the MLB Analytics
   Explorer; NFL/NBA are live on the API and in `/docs`.*
 
